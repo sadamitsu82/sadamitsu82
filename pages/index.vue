@@ -1,47 +1,56 @@
 <template>
-  <div class="container">
-    <header class="header">
-      <h1>Nuxt3 Website Template</h1>
-      <p class="subtitle">モダンなWebサイト開発のためのテンプレート</p>
-    </header>
+  <div class="page-wrapper">
+    <!-- WebGL背景 -->
+    <ClientOnly>
+      <WebGLBackground />
+    </ClientOnly>
 
-    <main class="main">
-      <section class="hero">
-        <h2>ようこそ</h2>
-        <p>このテンプレートはNuxt3を使用して構築されています。</p>
-      </section>
+    <!-- コンテンツオーバーレイ -->
+    <div class="content-overlay">
+      <header class="header">
+        <h1 class="title">Nuxt3 Website Template</h1>
+        <p class="subtitle">モダンなWebサイト開発のためのテンプレート</p>
+        <p class="description">Three.js × WebGL × Vue3 で構築された美しい3D体験</p>
+      </header>
 
-      <section class="features">
-        <h2>特徴</h2>
-        <div class="feature-grid">
-          <div class="feature-card">
-            <h3>⚡ 高速</h3>
-            <p>Nuxt3の最適化されたパフォーマンス</p>
-          </div>
-          <div class="feature-card">
-            <h3>🎨 モダン</h3>
-            <p>最新のVue 3 Composition API</p>
-          </div>
-          <div class="feature-card">
-            <h3>📱 レスポンシブ</h3>
-            <p>あらゆるデバイスに対応</p>
-          </div>
-          <div class="feature-card">
-            <h3>🔧 カスタマイズ可能</h3>
-            <p>柔軟な設定とコンポーネント</p>
-          </div>
-        </div>
-      </section>
+      <main class="main">
+        <section class="hero">
+          <h2>ようこそ</h2>
+          <p>このテンプレートはNuxt3とThree.jsを使用して構築されています。</p>
+        </section>
 
-      <section class="cta">
-        <h2>今すぐ始めよう</h2>
-        <NuxtLink to="/about" class="button">詳細を見る</NuxtLink>
-      </section>
-    </main>
+        <section class="features">
+          <h2>特徴</h2>
+          <div class="feature-grid">
+            <div class="feature-card">
+              <h3>⚡ 高速</h3>
+              <p>Nuxt3の最適化されたパフォーマンス</p>
+            </div>
+            <div class="feature-card">
+              <h3>🎨 モダン</h3>
+              <p>Three.js WebGL 3Dグラフィックス</p>
+            </div>
+            <div class="feature-card">
+              <h3>📱 レスポンシブ</h3>
+              <p>あらゆるデバイスに対応</p>
+            </div>
+            <div class="feature-card">
+              <h3>🔧 カスタマイズ可能</h3>
+              <p>柔軟な設定とコンポーネント</p>
+            </div>
+          </div>
+        </section>
 
-    <footer class="footer">
-      <p>&copy; 2024 Nuxt3 Website Template</p>
-    </footer>
+        <section class="cta">
+          <h2>今すぐ始めよう</h2>
+          <NuxtLink to="/about" class="button">詳細を見る</NuxtLink>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <p>&copy; 2024 Nuxt3 Website Template with WebGL</p>
+      </footer>
+    </div>
   </div>
 </template>
 
@@ -52,7 +61,16 @@ useHead({
 </script>
 
 <style scoped>
-.container {
+.page-wrapper {
+  position: relative;
+  min-height: 100vh;
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+.content-overlay {
+  position: relative;
+  z-index: 1;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -60,19 +78,44 @@ useHead({
 
 .header {
   text-align: center;
-  padding: 3rem 1rem;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 8rem 1rem 4rem;
   color: white;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
-.header h1 {
-  font-size: 2.5rem;
-  margin-bottom: 0.5rem;
+.title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, #ffffff 0%, #e0e7ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: fadeInUp 1s ease-out;
 }
 
 .subtitle {
-  font-size: 1.2rem;
-  opacity: 0.9;
+  font-size: 1.5rem;
+  opacity: 0.95;
+  margin-bottom: 0.5rem;
+  animation: fadeInUp 1.2s ease-out;
+}
+
+.description {
+  font-size: 1.1rem;
+  opacity: 0.85;
+  animation: fadeInUp 1.4s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .main {
@@ -80,28 +123,38 @@ useHead({
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem 1rem;
+  width: 100%;
 }
 
 .hero {
   text-align: center;
-  padding: 3rem 0;
+  padding: 4rem 0;
+  color: white;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 .hero h2 {
-  font-size: 2rem;
+  font-size: 2.5rem;
   margin-bottom: 1rem;
-  color: #333;
+  font-weight: 700;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  opacity: 0.9;
 }
 
 .features {
-  padding: 3rem 0;
+  padding: 4rem 0;
 }
 
 .features h2 {
   text-align: center;
-  font-size: 2rem;
-  margin-bottom: 2rem;
-  color: #333;
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  color: white;
+  font-weight: 700;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 .feature-grid {
@@ -112,53 +165,89 @@ useHead({
 
 .feature-card {
   padding: 2rem;
-  border-radius: 8px;
-  background: #f8f9fa;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+  color: white;
 }
 
 .feature-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transform: translateY(-10px);
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 15px 35px rgba(102, 126, 234, 0.3);
 }
 
 .feature-card h3 {
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem;
-  color: #667eea;
+  font-size: 1.8rem;
+  margin-bottom: 0.8rem;
+  color: #e0e7ff;
+}
+
+.feature-card p {
+  opacity: 0.9;
+  line-height: 1.6;
 }
 
 .cta {
   text-align: center;
-  padding: 3rem 0;
+  padding: 4rem 0;
 }
 
 .cta h2 {
-  font-size: 2rem;
-  margin-bottom: 1.5rem;
-  color: #333;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: white;
+  font-weight: 700;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 .button {
   display: inline-block;
-  padding: 1rem 2rem;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 1.2rem 3rem;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.3);
   color: white;
   text-decoration: none;
   border-radius: 50px;
   font-weight: bold;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
 }
 
 .button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+  border-color: rgba(255, 255, 255, 0.5);
 }
 
 .footer {
   text-align: center;
   padding: 2rem 1rem;
-  background: #f8f9fa;
-  color: #666;
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  color: rgba(255, 255, 255, 0.8);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 2.5rem;
+  }
+
+  .subtitle {
+    font-size: 1.2rem;
+  }
+
+  .description {
+    font-size: 1rem;
+  }
+
+  .feature-grid {
+    grid-template-columns: 1fr;
+  }
 }
 </style>
