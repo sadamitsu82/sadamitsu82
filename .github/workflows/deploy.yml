@@ -5,6 +5,7 @@ on:
     branches:
       - main
       - master
+      - claude/add-japanese-summary-011CUKMrKUxz2LDaWh1fDB8k
   workflow_dispatch:
 
 permissions:
