@@ -51,7 +51,7 @@
       <div class="control-group">
         <label>
           速度減衰 (Velocity Decay)
-          <span class="value">{{ velocityDissipation.toFixed(2) }}</span>
+          <span class="value">{{ velocityDissipation.toFixed(4) }}</span>
         </label>
         <input
           type="range"
@@ -65,7 +65,7 @@
       <div class="control-group">
         <label>
           密度減衰 (Density Decay)
-          <span class="value">{{ densityDissipation.toFixed(2) }}</span>
+          <span class="value">{{ densityDissipation.toFixed(4) }}</span>
         </label>
         <input
           type="range"
@@ -107,7 +107,8 @@
       <button @click="reset" class="reset-button">リセット</button>
 
       <div class="info">
-        <p>💡 マウスをドラッグして流体を操作</p>
+        <p>💡 マウス/タッチをドラッグして流体を追加</p>
+        <p>✨ 起動時に自動で流体が表示されます</p>
       </div>
     </div>
   </div>
@@ -122,9 +123,9 @@ const canvasRef = ref<HTMLCanvasElement | null>(null)
 const viscosity = ref(0.001)
 const diffusion = ref(0.0001)
 const pressure = ref(1.0)
-const velocityDissipation = ref(0.98)
-const densityDissipation = ref(0.99)
-const colorIntensity = ref(1.5)
+const velocityDissipation = ref(0.995)
+const densityDissipation = ref(0.997)
+const colorIntensity = ref(2.5)
 const mouseForce = ref(50)
 
 let gl: WebGLRenderingContext | null = null
@@ -523,9 +524,42 @@ const handleResize = () => {
   initGL()
 }
 
+const addInitialFluid = () => {
+  if (!canvasRef.value) return
+
+  // 画面のいくつかの位置に自動的に流体を追加
+  const positions = [
+    { x: 0.3, y: 0.5 },
+    { x: 0.5, y: 0.3 },
+    { x: 0.7, y: 0.7 },
+    { x: 0.4, y: 0.8 },
+    { x: 0.6, y: 0.4 }
+  ]
+
+  positions.forEach((pos, index) => {
+    setTimeout(() => {
+      mouse.x = pos.x * canvasRef.value!.width
+      mouse.y = pos.y * canvasRef.value!.height
+      mouse.prevX = mouse.x + (Math.random() - 0.5) * 100
+      mouse.prevY = mouse.y + (Math.random() - 0.5) * 100
+      mouse.down = true
+
+      // 短時間だけマウスダウン状態にして流体を追加
+      setTimeout(() => {
+        mouse.down = false
+      }, 50)
+    }, index * 200)
+  })
+}
+
 onMounted(() => {
   initGL()
   render()
+
+  // 起動時に自動的に流体を追加
+  setTimeout(() => {
+    addInitialFluid()
+  }, 500)
 
   window.addEventListener('mousemove', handleMouseMove)
   window.addEventListener('mousedown', handleMouseDown)
