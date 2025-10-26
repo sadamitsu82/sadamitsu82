@@ -4,6 +4,7 @@
       <NuxtLink to="/" class="logo">Nuxt3 Template</NuxtLink>
       <div class="nav-links">
         <NuxtLink to="/">ホーム</NuxtLink>
+        <NuxtLink to="/fluid">流体デモ</NuxtLink>
         <NuxtLink to="/about">About</NuxtLink>
       </div>
     </nav>

@@ -1,57 +1,74 @@
 <template>
-  <div class="page-wrapper">
-    <!-- 2D流体シミュレーション背景 -->
-    <ClientOnly>
-      <FluidSimulation />
-    </ClientOnly>
+  <div class="container">
+    <header class="header">
+      <h1>Nuxt3 Website Template</h1>
+      <p class="subtitle">モダンなWebサイト開発のためのテンプレート</p>
+    </header>
 
-    <!-- コンテンツオーバーレイ -->
-    <div class="content-overlay">
-      <header class="header">
-        <h1 class="title">Nuxt3 Website Template</h1>
-        <p class="subtitle">モダンなWebサイト開発のためのテンプレート</p>
-        <p class="description">WebGL流体シミュレーション × Vue3 で構築された美しいインタラクティブ体験</p>
-      </header>
+    <main class="main">
+      <section class="hero">
+        <h2>ようこそ</h2>
+        <p>このテンプレートはNuxt3を使用して構築された、モダンなWebサイト開発のためのスターターキットです。</p>
+      </section>
 
-      <main class="main">
-        <section class="hero">
-          <h2>ようこそ</h2>
-          <p>このテンプレートはNuxt3とWebGL流体シミュレーションを使用して構築されています。</p>
-          <p class="hero-hint">✨ マウスをドラッグして流体を操作できます</p>
-        </section>
-
-        <section class="features">
-          <h2>特徴</h2>
-          <div class="feature-grid">
-            <div class="feature-card">
-              <h3>⚡ 高速</h3>
-              <p>Nuxt3の最適化されたパフォーマンス</p>
-            </div>
-            <div class="feature-card">
-              <h3>🎨 流体シミュレーション</h3>
-              <p>WebGLによるリアルタイム2D流体計算</p>
-            </div>
-            <div class="feature-card">
-              <h3>🎛️ パラメータ調整</h3>
-              <p>粘性・拡散・圧力などをリアルタイム操作</p>
-            </div>
-            <div class="feature-card">
-              <h3>📱 レスポンシブ</h3>
-              <p>タッチデバイスにも完全対応</p>
-            </div>
+      <section class="features">
+        <h2>主な機能</h2>
+        <div class="feature-grid">
+          <div class="feature-card">
+            <h3>⚡ 高速</h3>
+            <p>Nuxt3の最適化されたパフォーマンス</p>
           </div>
-        </section>
+          <div class="feature-card">
+            <h3>🎨 モダンなUI</h3>
+            <p>美しいグラデーションとアニメーション</p>
+          </div>
+          <div class="feature-card">
+            <h3>📱 レスポンシブ</h3>
+            <p>あらゆるデバイスに対応</p>
+          </div>
+          <div class="feature-card">
+            <h3>🔧 カスタマイズ可能</h3>
+            <p>柔軟な設定とコンポーネント</p>
+          </div>
+          <div class="feature-card">
+            <h3>🌊 流体シミュレーション</h3>
+            <p>WebGLによる2D流体計算デモ</p>
+          </div>
+          <div class="feature-card">
+            <h3>🎯 TypeScript</h3>
+            <p>型安全な開発環境</p>
+          </div>
+        </div>
+      </section>
 
-        <section class="cta">
-          <h2>今すぐ始めよう</h2>
-          <NuxtLink to="/about" class="button">詳細を見る</NuxtLink>
-        </section>
-      </main>
+      <section class="demos">
+        <h2>デモページ</h2>
+        <div class="demo-grid">
+          <NuxtLink to="/fluid" class="demo-card">
+            <h3>🌊 2D流体シミュレーション</h3>
+            <p>WebGLによるリアルタイム流体計算</p>
+            <span class="demo-badge">インタラクティブ</span>
+          </NuxtLink>
+          <NuxtLink to="/about" class="demo-card">
+            <h3>📄 About</h3>
+            <p>テンプレートの詳細情報</p>
+            <span class="demo-badge">ドキュメント</span>
+          </NuxtLink>
+        </div>
+      </section>
 
-      <footer class="footer">
-        <p>&copy; 2024 Nuxt3 Website Template with Fluid Simulation</p>
-      </footer>
-    </div>
+      <section class="cta">
+        <h2>今すぐ始めよう</h2>
+        <div class="cta-buttons">
+          <NuxtLink to="/fluid" class="button primary">流体デモを見る</NuxtLink>
+          <NuxtLink to="/about" class="button secondary">詳細を見る</NuxtLink>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>&copy; 2024 Nuxt3 Website Template</p>
+    </footer>
   </div>
 </template>
 
@@ -62,94 +79,57 @@ useHead({
 </script>
 
 <style scoped>
-.page-wrapper {
-  position: relative;
-  min-height: 100vh;
-  width: 100vw;
-  overflow-x: hidden;
-}
-
-.content-overlay {
-  position: relative;
-  z-index: 1;
+.container {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 100%);
 }
 
 .header {
   text-align: center;
-  padding: 8rem 1rem 4rem;
+  padding: 4rem 1rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
-.title {
-  font-size: 3.5rem;
+.header h1 {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
   font-weight: 800;
-  margin-bottom: 1rem;
-  background: linear-gradient(135deg, #ffffff 0%, #e0e7ff 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: fadeInUp 1s ease-out;
 }
 
 .subtitle {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   opacity: 0.95;
-  margin-bottom: 0.5rem;
-  animation: fadeInUp 1.2s ease-out;
-}
-
-.description {
-  font-size: 1.1rem;
-  opacity: 0.85;
-  animation: fadeInUp 1.4s ease-out;
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 .main {
   flex: 1;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem 1rem;
+  padding: 3rem 1rem;
   width: 100%;
 }
 
 .hero {
   text-align: center;
-  padding: 4rem 0;
-  color: white;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  padding: 3rem 0;
 }
 
 .hero h2 {
   font-size: 2.5rem;
   margin-bottom: 1rem;
+  color: #333;
   font-weight: 700;
 }
 
 .hero p {
   font-size: 1.2rem;
-  opacity: 0.9;
-}
-
-.hero-hint {
-  margin-top: 1rem;
-  font-size: 1rem;
-  opacity: 0.8;
-  font-style: italic;
+  color: #666;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.8;
 }
 
 .features {
@@ -160,102 +140,205 @@ useHead({
   text-align: center;
   font-size: 2.5rem;
   margin-bottom: 3rem;
-  color: white;
+  color: #333;
   font-weight: 700;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 .feature-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
 }
 
 .feature-card {
   padding: 2rem;
   border-radius: 16px;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: white;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   transition: all 0.3s ease;
-  color: white;
+  border: 2px solid transparent;
 }
 
 .feature-card:hover {
-  transform: translateY(-10px);
-  background: rgba(255, 255, 255, 0.15);
-  box-shadow: 0 15px 35px rgba(102, 126, 234, 0.3);
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(102, 126, 234, 0.2);
+  border-color: #667eea;
 }
 
 .feature-card h3 {
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   margin-bottom: 0.8rem;
-  color: #e0e7ff;
+  color: #667eea;
+  font-weight: 700;
 }
 
 .feature-card p {
-  opacity: 0.9;
+  color: #666;
   line-height: 1.6;
+}
+
+.demos {
+  padding: 4rem 0;
+}
+
+.demos h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  color: #333;
+  font-weight: 700;
+}
+
+.demo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.demo-card {
+  position: relative;
+  padding: 2.5rem;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.demo-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.demo-card:hover::before {
+  opacity: 1;
+}
+
+.demo-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 60px rgba(102, 126, 234, 0.4);
+}
+
+.demo-card h3 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.demo-card p {
+  font-size: 1.1rem;
+  opacity: 0.95;
+  margin-bottom: 1rem;
+}
+
+.demo-badge {
+  display: inline-block;
+  padding: 0.4rem 1rem;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .cta {
   text-align: center;
   padding: 4rem 0;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-radius: 24px;
+  margin-top: 2rem;
 }
 
 .cta h2 {
   font-size: 2.5rem;
   margin-bottom: 2rem;
-  color: white;
+  color: #333;
   font-weight: 700;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .button {
   display: inline-block;
   padding: 1.2rem 3rem;
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(10px);
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  color: white;
-  text-decoration: none;
   border-radius: 50px;
-  font-weight: bold;
+  font-weight: 700;
   font-size: 1.1rem;
+  text-decoration: none;
   transition: all 0.3s ease;
 }
 
-.button:hover {
+.button.primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  box-shadow: 0 4px 20px rgba(102, 126, 234, 0.3);
+}
+
+.button.primary:hover {
   transform: translateY(-3px);
-  background: rgba(255, 255, 255, 0.3);
-  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
-  border-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 8px 30px rgba(102, 126, 234, 0.4);
+}
+
+.button.secondary {
+  background: white;
+  color: #667eea;
+  border: 2px solid #667eea;
+}
+
+.button.secondary:hover {
+  background: #667eea;
+  color: white;
+  transform: translateY(-3px);
 }
 
 .footer {
   text-align: center;
   padding: 2rem 1rem;
-  background: rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(10px);
+  background: #2d3748;
   color: rgba(255, 255, 255, 0.8);
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 @media (max-width: 768px) {
-  .title {
-    font-size: 2.5rem;
+  .header h1 {
+    font-size: 2rem;
   }
 
   .subtitle {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
 
-  .description {
-    font-size: 1rem;
+  .hero h2 {
+    font-size: 2rem;
   }
 
-  .feature-grid {
+  .features h2,
+  .demos h2,
+  .cta h2 {
+    font-size: 2rem;
+  }
+
+  .feature-grid,
+  .demo-grid {
     grid-template-columns: 1fr;
+  }
+
+  .cta-buttons {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0 1rem;
   }
 }
 </style>
