@@ -4,7 +4,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
 
   app: {
-    baseURL: process.env.NODE_ENV === 'production' ? '/' : '/',
+    baseURL: '/sadamitsu82/',
     head: {
       title: 'Nuxt3 Website Template',
       meta: [
@@ -13,7 +13,7 @@ export default defineNuxtConfig({
         { name: 'description', content: 'Nuxt3で構築されたモダンなWebサイトテンプレート' }
       ],
       link: [
-        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+        { rel: 'icon', type: 'image/x-icon', href: '/sadamitsu82/favicon.ico' }
       ]
     }
   },
