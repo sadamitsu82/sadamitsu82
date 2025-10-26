@@ -111,6 +111,37 @@ app: {
 
 ## デプロイ
 
+### GitHub Pages（推奨）
+
+このテンプレートはGitHub Pagesへの自動デプロイが設定されています。
+
+#### 初回セットアップ手順
+
+1. **GitHubリポジトリの設定**
+   - GitHubのリポジトリページに移動
+   - `Settings` → `Pages` を開く
+   - `Source` で `GitHub Actions` を選択
+
+2. **メインブランチにマージ**
+   ```bash
+   # 現在のブランチをmainにマージ
+   git checkout main
+   git merge your-branch-name
+   git push origin main
+   ```
+
+3. **自動デプロイ**
+   - mainブランチへのpushで自動的にビルド・デプロイされます
+   - `Actions` タブでデプロイの進行状況を確認できます
+
+4. **公開URL**
+   - `https://sadamitsu82.github.io/` でアクセス可能になります
+   - デプロイ完了まで数分かかる場合があります
+
+#### 手動デプロイ
+
+GitHubの `Actions` タブから `Deploy to GitHub Pages` ワークフローを手動実行することもできます。
+
 ### Vercel
 
 ```bash

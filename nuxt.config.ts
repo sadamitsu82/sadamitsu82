@@ -4,6 +4,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
 
   app: {
+    baseURL: process.env.NODE_ENV === 'production' ? '/' : '/',
     head: {
       title: 'Nuxt3 Website Template',
       meta: [
@@ -20,4 +21,11 @@ export default defineNuxtConfig({
   css: ['~/assets/css/main.css'],
 
   modules: [],
+
+  // GitHub Pages用の静的サイト生成設定
+  ssr: false,
+
+  nitro: {
+    preset: 'static'
+  },
 })
