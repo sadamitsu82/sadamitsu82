@@ -1,8 +1,8 @@
 <template>
   <div class="page-wrapper">
-    <!-- WebGL背景 -->
+    <!-- 2D流体シミュレーション背景 -->
     <ClientOnly>
-      <WebGLBackground />
+      <FluidSimulation />
     </ClientOnly>
 
     <!-- コンテンツオーバーレイ -->
@@ -10,13 +10,14 @@
       <header class="header">
         <h1 class="title">Nuxt3 Website Template</h1>
         <p class="subtitle">モダンなWebサイト開発のためのテンプレート</p>
-        <p class="description">Three.js × WebGL × Vue3 で構築された美しい3D体験</p>
+        <p class="description">WebGL流体シミュレーション × Vue3 で構築された美しいインタラクティブ体験</p>
       </header>
 
       <main class="main">
         <section class="hero">
           <h2>ようこそ</h2>
-          <p>このテンプレートはNuxt3とThree.jsを使用して構築されています。</p>
+          <p>このテンプレートはNuxt3とWebGL流体シミュレーションを使用して構築されています。</p>
+          <p class="hero-hint">✨ マウスをドラッグして流体を操作できます</p>
         </section>
 
         <section class="features">
@@ -27,16 +28,16 @@
               <p>Nuxt3の最適化されたパフォーマンス</p>
             </div>
             <div class="feature-card">
-              <h3>🎨 モダン</h3>
-              <p>Three.js WebGL 3Dグラフィックス</p>
+              <h3>🎨 流体シミュレーション</h3>
+              <p>WebGLによるリアルタイム2D流体計算</p>
+            </div>
+            <div class="feature-card">
+              <h3>🎛️ パラメータ調整</h3>
+              <p>粘性・拡散・圧力などをリアルタイム操作</p>
             </div>
             <div class="feature-card">
               <h3>📱 レスポンシブ</h3>
-              <p>あらゆるデバイスに対応</p>
-            </div>
-            <div class="feature-card">
-              <h3>🔧 カスタマイズ可能</h3>
-              <p>柔軟な設定とコンポーネント</p>
+              <p>タッチデバイスにも完全対応</p>
             </div>
           </div>
         </section>
@@ -48,7 +49,7 @@
       </main>
 
       <footer class="footer">
-        <p>&copy; 2024 Nuxt3 Website Template with WebGL</p>
+        <p>&copy; 2024 Nuxt3 Website Template with Fluid Simulation</p>
       </footer>
     </div>
   </div>
@@ -142,6 +143,13 @@ useHead({
 .hero p {
   font-size: 1.2rem;
   opacity: 0.9;
+}
+
+.hero-hint {
+  margin-top: 1rem;
+  font-size: 1rem;
+  opacity: 0.8;
+  font-style: italic;
 }
 
 .features {
