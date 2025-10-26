@@ -6,6 +6,7 @@ on:
       - main
       - master
       - claude/add-japanese-summary-011CUKMrKUxz2LDaWh1fDB8k
+      - claude/understand-project-011CUUvi78y7pod3kZaohqhn
   workflow_dispatch:
 
 permissions:
